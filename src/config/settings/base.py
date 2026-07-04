@@ -41,7 +41,8 @@ INSTALLED_APPS = [
 
     # own apps
     'apps.utils',
-    'apps.users'
+    'apps.users',
+    'apps.autosalon.apps.AutosalonConfig',
 ]
 
 MIDDLEWARE = [
@@ -187,3 +188,13 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_IGNORE_RESULT = False
 CELERY_TASK_SOFT_TIME_LIMIT = 60
 
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Auto Salon API',
+    'DESCRIPTION': 'Avtosalon loyihasi uchun API xizmatlari',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}

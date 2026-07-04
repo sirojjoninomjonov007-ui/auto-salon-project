@@ -1,16 +1,22 @@
-from django.shortcuts import render
-from .models import Car 
+from rest_framework import viewsets
+from .models import User, Car, Order, TestDrive
+from apps.serializers import UserSerializer, CarSerializer, OrderSerializer, TestDriveSerializer
 
-# Create your views here.
-
-def car_list(request):
-    cars = Car.objects.all()
-    return render(request, 'cars/car_list.html', {'cars': cars})
-
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
+class CarViewSet(viewsets.ModelViewSet):
+    queryset = Car.objects.all()
+    serializer_class = CarSerializer
 
 
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
 
 
-
+class TestDriveViewSet(viewsets.ModelViewSet):
+    queryset = TestDrive.objects.all()
+    serializer_class = TestDriveSerializer
